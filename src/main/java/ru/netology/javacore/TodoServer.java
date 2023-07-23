@@ -1,6 +1,7 @@
 package ru.netology.javacore;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -26,7 +27,10 @@ public class TodoServer {
                         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         PrintWriter out = new PrintWriter(socket.getOutputStream());
                 ) {
-                    // обработка одного подключения
+                    System.out.println("New connection accepted");
+                    String word = in.readLine();
+                    GsonBuilder builder = new GsonBuilder();
+                    Gson gson = builder.create();
                 }
             }
         } catch (IOException e) {
