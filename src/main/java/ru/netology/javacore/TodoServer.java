@@ -2,6 +2,7 @@ package ru.netology.javacore;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -31,6 +32,9 @@ public class TodoServer {
                     String word = in.readLine();
                     GsonBuilder builder = new GsonBuilder();
                     Gson gson = builder.create();
+                    User user  = gson.fromJson(word, User.class);
+                    todos.addTask(user.task);
+                    System.out.println(todos.getAllTasks());
                 }
             }
         } catch (IOException e) {
